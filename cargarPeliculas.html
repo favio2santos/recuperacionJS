@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peliculas</title>
+    <script src="datos.js"></script>
+    <script src="Peliculas.js"></script>
+</head>
+<body>
+    <h1>Cargar Peliculas en almacenamiento Local</h1>
+    <script>
+        lista = [];
+        
+        PELICULAS.forEach(peli => {
+            generos = peli['genero'].split('|');
+            lista.push(new Pelicula(peli['titulo'], peli['id'], generos, peli['presupuesto'],peli['director']['nombre']));
+        });
+
+        localStorage.setItem("Peliculas", JSON.stringify(lista));
+    </script>
+</body>
+</html>
